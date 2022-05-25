@@ -25,7 +25,6 @@
     }
 </style>
 <ul class="navigationbar">
-    <li><a  href="/index.php">Home</a></li>
-    <li><a href="/pages/weather.php">Weather</a></li>
+    <li> <a href="/index.php"><b>Home</b></a></li>
+    <li><a href="/pages/weather.php"><b>Weather</b></a></li>
 </ul>
-© 2022 GitHub, Inc.

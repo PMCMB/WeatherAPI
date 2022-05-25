@@ -13,26 +13,14 @@
     <link rel="stylesheet" href="/pages/assets/css/form-elements.css">
     <link rel="stylesheet" href="/pages/assets/css/style.css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Favicon and touch icons -->
-    <link rel="shortcut icon" href="/pages/assets/ico/favicon.png">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144"
-          href="/pages/assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114"
-          href="/pages/assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/pages/assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="/pages/assets/ico/apple-touch-icon-57-precomposed.png">
-    <title>Simple Map</title>
+    <title>Weather</title>
+    <link rel="icon" type="image/x-icon" href="/pages/assets/ico/favicon.png">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-
+    <h1 style="text-align:center;color:white;background-color:#2b669a;
+        border:2px solid gray;"><strong>WEATHER</strong></h1>
 </head>
 <body>
+
 <?php include("navbar.php"); ?>
 <div class="top-content">
 
@@ -40,7 +28,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2 text">
-                    <h1><strong>Weather</strong> Selecione uma Cidade</h1>
+                    <h1 style='color: #2b669a;font-weight: bold'>Selecione uma Cidade</h1>
                     <div class="description">
                     </div>
                 </div>
@@ -80,29 +68,38 @@
                     } else {
                         $json = json_decode($response, true);
                         echo "<h1 style='color: white;font-weight: bold;'>" . $json["name"] . "</h1>";
-                        echo "<h1 style='color: white;font-weight: bold;'>" . $json["main"]["temp"] . "ºC</h1>";
-                        echo "<h1 style='color: white;font-weight: bold;'>" . $json["main"]["humidity"] . "%</h1>";
-                        echo "<h2 style='color: white;font-weight: bold;'>" . $json["weather"][0]["description"] . "</h2>";
+                        echo "<h3 style='color: white;font-weight: bold;'>" . $json["weather"][0]["description"] . "</h3>";
 
                         if ($json["weather"][0]["description"] == "clear sky") {
                             ?>
                             <img src="/pages/assets/img/ClearSky.jpg">
                             <?php
                         }
-                        if ($json["weather"][0]["description"] == "broken clouds") {
+                        elseif ($json["weather"][0]["description"] == "broken clouds") {
                                 ?>
                                 <img src="/pages/assets/img/BrokenClouds.jpg">
                                 <?php
                         }
-                        if ($json["weather"][0]["description"] == "overcast clouds") {
-                                ?>
-                                <img src="/pages/assets/img/OvercastClouds.jpg">
-                                <?php
+                        elseif ($json["weather"][0]["description"] == "overcast clouds") {
+                             ?>
+                             <img src="/pages/assets/img/OvercastClouds.jpg">
+                             <?php
                             }
+                        elseif ($json["weather"][0]["description"] == "light rain") {
+                            ?>
+                            <img src="/pages/assets/img/LightRain.jpg">
+                            <?php
+                        }
+                        elseif ($json["weather"][0]["description"] == "scattered clouds") {
+                            ?>
+                            <img src="/pages/assets/img/ScatteredClouds.jpg">
+                            <?php
+                        }
 
                     }
-
-
+                    echo "<h3 style='color: white;font-weight: bold;'>Temperatura: " . $json["main"]["temp"] . "ºC</h3>";
+                    echo "<h3 style='color: white;font-weight: bold;'>Humidade: " . $json["main"]["humidity"] . "%</h3>";
+                    echo "<h3 style='color: white;font-weight: bold;'>Pressão atmosférica: " . $json["main"]["pressure"] . " (atm)</h3>";
                 } ?>
             </div>
         </div>
