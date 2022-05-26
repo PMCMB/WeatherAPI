@@ -8,6 +8,13 @@ body {
     text-align: center;
 }
 
+div.central{
+
+	padding-top: 180px;
+}
+
+
+
 strong { font-weight: 500; }
 
 a, a:hover, a:focus {
