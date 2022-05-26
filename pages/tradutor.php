@@ -30,6 +30,8 @@
     <link rel="apple-touch-icon-precomposed" href="/pages/assets/ico/apple-touch-icon-57-precomposed.png">
     <title>Simple Map</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <h1 style="text-align:center;color:white;background-color:#2b669a;
+        border:2px solid gray;"><strong>WEATHER API - Translate</strong></h1>
 
 </head>
 <body>
@@ -63,7 +65,7 @@
 
                 $curl = curl_init();
 
-                curl_setopt($curl, CURLOPT_FOLLOWLOCATION, TRUE);
+                curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
                 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
                 curl_setopt_array($curl, [

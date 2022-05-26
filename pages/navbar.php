@@ -25,7 +25,7 @@
     }
 </style>
 <ul class="navigationbar">
-    <li> <a href="/index.php"><b>Home</b></a></li>
+    <li><a href="/index.php"><b>Home</b></a></li>
     <li><a href="/pages/weather.php"><b>Weather</b></a></li>
-    <li><a href="/pages/tradutor.php">Translate</a></li>
+    <li><a href="/pages/tradutor.php"><b>Translate</b></a></li>
 </ul>

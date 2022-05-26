@@ -17,7 +17,7 @@
     <link rel="icon" type="image/x-icon" href="/pages/assets/ico/favicon.png">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <h1 style="text-align:center;color:white;background-color:#2b669a;
-        border:2px solid gray;"><strong>WEATHER</strong></h1>
+        border:2px solid gray;"><strong>WEATHER API - Weather</strong></h1>
 </head>
 <body>
 
@@ -95,11 +95,16 @@
                             <img src="/pages/assets/img/ScatteredClouds.jpg">
                             <?php
                         }
+                        elseif ($json["weather"][0]["description"] == "few clouds") {
+                            ?>
+                            <img src="/pages/assets/img/FewClouds.jpg">
+                            <?php
+                        }
 
                     }
                     echo "<h3 style='color: white;font-weight: bold;'>Temperatura: " . $json["main"]["temp"] . "ºC</h3>";
                     echo "<h3 style='color: white;font-weight: bold;'>Humidade: " . $json["main"]["humidity"] . "%</h3>";
-                    echo "<h3 style='color: white;font-weight: bold;'>Pressão atmosférica: " . $json["main"]["pressure"] . " (atm)</h3>";
+                    echo "<h3 style='color: white;font-weight: bold;'>Pressão atmosférica: " . $json["main"]["pressure"] . " atm</h3>";
                 } ?>
             </div>
         </div>
