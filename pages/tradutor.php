@@ -21,13 +21,9 @@
     <![endif]-->
 
     <!-- Favicon and touch icons -->
-    <link rel="shortcut icon" href="/pages/assets/ico/favicon.png">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144"
-          href="/pages/assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114"
-          href="/pages/assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/pages/assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="/pages/assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="icon" type="image/svg+xml" href="/pages/assets/ico/favicon.png">
+    <link rel="icon" type="image/png" href="/pages/assets/ico/favicon.png">
+
     <title>Simple Map</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <h1 style="text-align:center;color:white;background-color:#2b669a;
@@ -42,20 +38,32 @@
             <div class="form-group">
                 <form method="POST">
                     <select name="lOrigem" required>
-                        <option value="">Introduza a língua de origem</option>
+                        <option value="">língua de origem</option>
                         <option value="en">Inglês</option>
                         <option value="pt">Português</option>
-                    </select>
+                        <option value="de">Alemão</option>
+                        <option value="es">Espanhol</option>
+                        <option value="da">Dinamarquês</option>
+                        <option value="ko">Coreano</option>
+                        <option value="ro">Romeno</option>
 
-                    <select name="lDestino" required>
-                        <option value="">Introduza a língua para qual quer traduzir</option>
+                    </select>
+                    <select  name="lDestino" required>
+                        <option value="">Tradução</option>
                         <option value="en">Inglês</option>
                         <option value="pt">Português</option>
+                        <option value="de">Alemão</option>
+                        <option value="es">Espanhol</option>
+                        <option value="da">Dinamarquês</option>
+                        <option value="ko">Coreano</option>
+                        <option value="ro">Romeno</option>
                     </select>
 
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Introduza o texto que quer traduzir!"></textarea>
-                    <input type="submit" value="TRADUZIR">
+
+                    <textarea name="texto" cols="40" rows="5" class="form-control" id="exampleFormControlTextarea4" placeholder="Introduza o texto a traduzir!"></textarea>
+                    <input type="submit"  value="TRADUZIR">
                 </form>
+
 
 
                 <?php
@@ -95,27 +103,22 @@
                 } else {
                 $json = json_decode($response, true);
 
-                $texto_traduzido=$json["data"]["translatedText"]; // POR PARA UMA VARIAVEL O TEXTO TRADUZIDO
+                $texto_traduzido=$json["data"]["translatedText"];
 
                 ?>
+<br>
 
-                <textarea  class="form-control" id="exampleFormControlTextarea2" rows="7"> <?php echo $texto_traduzido ?> </textarea>
-
-
-
-                <label for="exampleFormControlTextarea1">Example textarea</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-
-
+                <textarea name="texto" cols="40" rows="5" class="form-control" id="exampleFormControlTextarea4" > <?php echo $texto_traduzido ?> </textarea>
 
             <?php
-            }
+                 }
 
             }
 
             ?>
 
+
+            </div>
         </div>
     </div>
 </div>
