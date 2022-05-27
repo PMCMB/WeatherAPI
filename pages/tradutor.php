@@ -27,7 +27,7 @@
     <title>Simple Map</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <h1 style="text-align:center;color:white;background-color:#2b669a;
-        border:2px solid gray;"><strong>WEATHER API - Translate</strong></h1>
+        border:2px solid gray;"><strong>Translator API</strong></h1>
 
 </head>
 <body>
@@ -128,7 +128,7 @@
 <script src="/pages/assets/js/jquery-1.11.1.min.js"></script>
 <script src="/pages/assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="/pages/assets/js/jquery.backstretch.min.js"></script>
-<script src="/pages/assets/js/scripts.js"></script>
+<script src="/pages/assets/js/scripts-t.js"></script>
 
 <!--[if lt IE 10]>
 <script src="/pages/assets/js/placeholder.js"></script>

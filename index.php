@@ -5,7 +5,7 @@
 session_start();
 
 ?>
-<?php ?>
+
 <html>
 <head>
 
@@ -25,8 +25,10 @@ session_start();
     <link rel="icon" type="image/x-icon" href="/pages/assets/ico/favicon.png">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <h1 style="text-align:center;color:white;background-color:#2b669a;
-        border:2px solid gray;"><strong>WEATHER API</strong></h1>
+        border:2px solid gray;"><strong>Weather/Translator API</strong></h1>
+
 </head>
+
 <body>
 
 <?php
@@ -38,11 +40,17 @@ include("pages/navbar.php"); ?>
 <script src="/pages/assets/js/jquery-1.11.1.min.js"></script>
 <script src="/pages/assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="/pages/assets/js/jquery.backstretch.min.js"></script>
-<script src="/pages/assets/js/scripts.js"></script>
-
+<script src="/pages/assets/js/scripts-h.js"></script>
+    <br><br><br><br><br>
+    <a style="color:yellow;"href="/pages/weather.php" title="Clique para ver o tempo"><b>Weather</b></a>
+    <br>
+    <a href="/pages/weather.php" title="Clique para ver o tempo">
+    <img src="/pages/assets/img/intro.gif" vertical-align="center" alt="weather image" width="500" height="200";">
+    </a>
 <!--[if lt IE 10]>
-<script src="/pages/assets/js/placeholder.js"></script>
+
 <![endif]-->
 
 </body>
+
 </html>
