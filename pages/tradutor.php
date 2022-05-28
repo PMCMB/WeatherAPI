@@ -37,8 +37,8 @@
         <div class="central">
             <div class="form-group">
                 <form method="POST">
-                    <select name="lOrigem" required>
-                        <option value="">língua de origem</option>
+                    <select class="select" name="lOrigem" required>
+                        <option value="">Língua de Origem</option>
                         <option value="en">Inglês</option>
                         <option value="pt">Português</option>
                         <option value="de">Alemão</option>
@@ -48,7 +48,7 @@
                         <option value="ro">Romeno</option>
 
                     </select>
-                    <select  name="lDestino" required>
+                    <select  class="select" name="lDestino" required>
                         <option value="">Tradução</option>
                         <option value="en">Inglês</option>
                         <option value="pt">Português</option>
@@ -58,16 +58,17 @@
                         <option value="ko">Coreano</option>
                         <option value="ro">Romeno</option>
                     </select>
-
+                    <br><br>
 
                     <textarea name="texto" cols="40" rows="5" class="form-control" id="exampleFormControlTextarea4" placeholder="Introduza o texto a traduzir!"></textarea>
-                    <input type="submit"  value="TRADUZIR">
+                    <br>
+                    <button class="button">
+                    <span>TRADUZIR</span>
+                    </button>
+                    <!--  <input type="submit"  value="TRADUZIR"> -->
                 </form>
 
-
-
                 <?php
-
 
                 if(isset($_POST["texto"])){
 
@@ -106,7 +107,6 @@
                 $texto_traduzido=$json["data"]["translatedText"];
 
                 ?>
-<br>
 
                 <textarea name="texto" cols="40" rows="5" class="form-control" id="exampleFormControlTextarea4" > <?php echo $texto_traduzido ?> </textarea>
 

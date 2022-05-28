@@ -35,8 +35,12 @@
             </div>
             <div class="row">
                 <form method="POST">
+
                     <input placeholder="cidade" name="city">
-                    <input type="submit" value="Submeter">
+                    <button class="button">
+                     <span>Submeter</span>
+                <!-- <input type="submit" value="Submeter"> -->
+                    </button>
                 </form>
                 <?php
 
