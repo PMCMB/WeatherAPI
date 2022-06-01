@@ -79,4 +79,5 @@
     <li><a href="/index.php" title="Página inicial"><b>Home</b></a></li>
     <li><a href="/pages/weather.php" title="Clique para ver o tempo"><b>Weather</b></a></li>
     <li><a href="/pages/tradutor.php" title="Clique para traduzir"><b>Translate</b></a></li>
+    <li><a href="/pages/currencyexchange.php" title="Clique para converter moedas"><b>Currency Exchange</b></a></li>
 </ul>
