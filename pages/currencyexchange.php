@@ -43,11 +43,11 @@
         </div>
         <div class ="row">
             <form method="POST">
-                <input placeholder="moedainicial" name="moedainicial">
+                <input placeholder="moedainicial" name="moedainicial" required>
                 <br>
-                <input placeholder="moedapretendida" name="moedapretendida">
+                <input placeholder="moedapretendida" name="moedapretendida" required>
                 <br>
-                <input placeholder="montante" name="montante">
+                <input placeholder="montante" name="montante" required>
                 <br>
                 <input type="submit">
             </form>

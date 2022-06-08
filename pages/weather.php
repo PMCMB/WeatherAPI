@@ -38,8 +38,8 @@
 
                     <input placeholder="cidade" name="city">
                     <button class="button">
-                     <span>Submeter</span>
-                <!-- <input type="submit" value="Submeter"> -->
+                        <span>Submeter</span>
+                        <!-- <input type="submit" value="Submeter"> -->
                     </button>
                 </form>
                 <?php
@@ -70,59 +70,65 @@
                     if ($err) {
                         echo "cURL Error #:" . $err;
                     } else {
-                        $json = json_decode($response, true);
-                        echo "<h1 style='color: white;font-weight: bold;'>" . $json["name"] . "</h1>";
-                        echo "<h3 style='color: white;font-weight: bold;'>" . $json["weather"][0]["description"] . "</h3>";
 
-                        if ($json["weather"][0]["description"] == "clear sky") {
-                            ?>
-                            <img src="/pages/assets/img/ClearSky.jpg" alt="weather image" width="100" height="100">
-                            <?php
+                        $json = json_decode($response, true);
+
+                        if ($json["cod"] == "404") {
+
+                            echo "<h1 style='color: white;font-weight: bold;'>" . $json["message"] . "</h1>";
+
                         }
-                        elseif ($json["weather"][0]["description"] == "broken clouds") {
+                        else {
+                            echo "<h1 style='color: white;font-weight: bold;'>" . $json["name"] . "</h1>";
+                            echo "<h3 style='color: white;font-weight: bold;'>" . $json["weather"][0]["description"] . "</h3>";
+
+                            if ($json["weather"][0]["description"] == "clear sky") {
                                 ?>
-                                <img src="/pages/assets/img/BrokenClouds.jpg" alt="weather image" width="100" height="100">
+                                <img src="/pages/assets/img/ClearSky.jpg" alt="weather image" width="100" height="100">
                                 <?php
-                        }
-                        elseif ($json["weather"][0]["description"] == "overcast clouds") {
-                             ?>
-                             <img src="/pages/assets/img/OvercastClouds.jpg" alt="weather image" width="100" height="100">
-                             <?php
+                            } elseif ($json["weather"][0]["description"] == "broken clouds") {
+                                ?>
+                                <img src="/pages/assets/img/BrokenClouds.jpg" alt="weather image" width="100"
+                                     height="100">
+                                <?php
+                            } elseif ($json["weather"][0]["description"] == "overcast clouds") {
+                                ?>
+                                <img src="/pages/assets/img/OvercastClouds.jpg" alt="weather image" width="100"
+                                     height="100">
+                                <?php
+                            } elseif ($json["weather"][0]["description"] == "light rain") {
+                                ?>
+                                <img src="/pages/assets/img/LightRain.jpg" alt="weather image" width="100" height="100">
+                                <?php
+                            } elseif ($json["weather"][0]["description"] == "scattered clouds") {
+                                ?>
+                                <img src="/pages/assets/img/ScatteredClouds.jpg" alt="weather image" width="100"
+                                     height="100">
+                                <?php
+                            } elseif ($json["weather"][0]["description"] == "few clouds") {
+                                ?>
+                                <img src="/pages/assets/img/FewClouds.jpg" alt="weather image" width="100" height="100">
+                                <?php
+                            } elseif ($json["weather"][0]["description"] == "light intensity shower rain") {
+                                ?>
+                                <img src="/pages/assets/img/LightIntensityShowerRain.jpg" alt="weather image"
+                                     width="100" height="100">
+                                <?php
+                            } elseif ($json["weather"][0]["description"] == "mist") {
+                                ?>
+                                <img src="/pages/assets/img/Mist.jpg" alt="weather image" width="100" height="100">
+                                <?php
+                            } elseif ($json["weather"][0]["description"] == "haze") {
+                                ?>
+                                <img src="/pages/assets/img/Haze.jpg" alt="weather image" width="100" height="100">
+                                <?php
                             }
-                        elseif ($json["weather"][0]["description"] == "light rain") {
-                            ?>
-                            <img src="/pages/assets/img/LightRain.jpg" alt="weather image" width="100" height="100">
-                            <?php
+                            echo "<h3 style='color: white;font-weight: bold;'>Temperatura: " . $json["main"]["temp"] . "ºC</h3>";
+                            echo "<h3 style='color: white;font-weight: bold;'>Humidade: " . $json["main"]["humidity"] . "%</h3>";
+                            echo "<h3 style='color: white;font-weight: bold;'>Pressão atmosférica: " . $json["main"]["pressure"] . " atm</h3>";
                         }
-                        elseif ($json["weather"][0]["description"] == "scattered clouds") {
-                            ?>
-                            <img src="/pages/assets/img/ScatteredClouds.jpg" alt="weather image" width="100" height="100">
-                            <?php
-                        }
-                        elseif ($json["weather"][0]["description"] == "few clouds") {
-                            ?>
-                            <img src="/pages/assets/img/FewClouds.jpg" alt="weather image" width="100" height="100">
-                            <?php
-                        }
-                        elseif ($json["weather"][0]["description"] == "light intensity shower rain") {
-                            ?>
-                            <img src="/pages/assets/img/LightIntensityShowerRain.jpg" alt="weather image" width="100" height="100">
-                            <?php
-                        }
-                        elseif ($json["weather"][0]["description"] == "mist") {
-                            ?>
-                            <img src="/pages/assets/img/Mist.jpg" alt="weather image" width="100" height="100">
-                            <?php
-                        }
-                        elseif ($json["weather"][0]["description"] == "haze") {
-                            ?>
-                            <img src="/pages/assets/img/Haze.jpg" alt="weather image" width="100" height="100">
-                            <?php
-                        }
+
                     }
-                    echo "<h3 style='color: white;font-weight: bold;'>Temperatura: " . $json["main"]["temp"] . "ºC</h3>";
-                    echo "<h3 style='color: white;font-weight: bold;'>Humidade: " . $json["main"]["humidity"] . "%</h3>";
-                    echo "<h3 style='color: white;font-weight: bold;'>Pressão atmosférica: " . $json["main"]["pressure"] . " atm</h3>";
                 } ?>
             </div>
         </div>

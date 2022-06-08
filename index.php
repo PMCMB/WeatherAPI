@@ -42,7 +42,7 @@ include("pages/navbar.php"); ?>
 <script src="/pages/assets/js/jquery.backstretch.min.js"></script>
 <script src="/pages/assets/js/scripts-h.js"></script>
     <br><br><br><br><br>
-    <a style="color:yellow;"href="/pages/weather.php" title="Clique para ver o tempo"><b>Weather</b></a>
+    <a style="color:yellow;" href="/pages/weather.php" title="Clique para ver o tempo"><b>Weather</b></a>
     <br>
     <a href="/pages/weather.php" title="Clique para ver o tempo">
     <img src="/pages/assets/img/intro.gif" vertical-align="center" alt="weather image" width="500" height="200";">

@@ -37,85 +37,115 @@
         <div class="central">
             <div class="form-group">
                 <form method="POST">
+
                     <select class="select" name="lOrigem" required>
                         <option value="">Língua de Origem</option>
-                        <option value="en">Inglês</option>
-                        <option value="pt">Português</option>
-                        <option value="de">Alemão</option>
-                        <option value="es">Espanhol</option>
-                        <option value="da">Dinamarquês</option>
-                        <option value="ko">Coreano</option>
-                        <option value="ro">Romeno</option>
+                        <?php
 
+                        $curl = curl_init();
+
+                        curl_setopt_array($curl, [
+                            CURLOPT_URL => "https://text-translator2.p.rapidapi.com/getLanguages",
+                            CURLOPT_RETURNTRANSFER => true,
+                            CURLOPT_FOLLOWLOCATION => true,
+                            CURLOPT_ENCODING => "",
+                            CURLOPT_MAXREDIRS => 10,
+                            CURLOPT_TIMEOUT => 30,
+                            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                            CURLOPT_CUSTOMREQUEST => "GET",
+                            CURLOPT_HTTPHEADER => [
+                                "X-RapidAPI-Host: text-translator2.p.rapidapi.com",
+                                "X-RapidAPI-Key: 2c919a96d7msh4b3c8f542ec9108p1b1e5fjsn5c0f938ee222"
+                            ],
+                        ]);
+
+                        $response = curl_exec($curl);
+                        $err = curl_error($curl);
+
+                        curl_close($curl);
+
+                        if ($err) {
+                            echo "cURL Error #:" . $err;
+                        } else {
+
+
+                        $json = json_decode($response, true);
+                        $array = $json["data"]["languages"];
+                        $allCountries = "";
+
+                        foreach ($array as $country) {
+                            $allCountries = $allCountries."<option value='" . $country["code"] . "'>" . $country["name"] . "</option>";
+                            echo "<option value='" . $country["code"] . "'>" . $country["name"] . "</option>";
+                        }
+                        ?>
                     </select>
-                    <select  class="select" name="lDestino" required>
-                        <option value="">Tradução</option>
-                        <option value="en">Inglês</option>
-                        <option value="pt">Português</option>
-                        <option value="de">Alemão</option>
-                        <option value="es">Espanhol</option>
-                        <option value="da">Dinamarquês</option>
-                        <option value="ko">Coreano</option>
-                        <option value="ro">Romeno</option>
+
+                    <select class="select" name="lDestino" required>
+                        <option value="">Língua de Destino</option>
+                        <?php echo $allCountries;
+                        }?>
+
                     </select>
                     <br><br>
 
-                    <textarea name="texto" cols="40" rows="5" class="form-control" id="exampleFormControlTextarea4" placeholder="Introduza o texto a traduzir!"></textarea>
+                    <textarea name="texto" cols="40" rows="5" class="form-control" id="exampleFormControlTextarea4"
+                              placeholder="Introduza o texto a traduzir!"></textarea>
                     <br>
                     <button class="button">
-                    <span>TRADUZIR</span>
+                        <span>TRADUZIR</span>
                     </button>
                     <!--  <input type="submit"  value="TRADUZIR"> -->
                 </form>
 
                 <?php
 
-                if(isset($_POST["texto"])){
+                if (isset($_POST["texto"])) {
 
-                $curl = curl_init();
+                    $curl = curl_init();
 
-                curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-                curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+                    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+                    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
-                curl_setopt_array($curl, [
-                    CURLOPT_URL => "https://text-translator2.p.rapidapi.com/translate",
-                    CURLOPT_RETURNTRANSFER => true,
-                    CURLOPT_FOLLOWLOCATION => true,
-                    CURLOPT_ENCODING => "",
-                    CURLOPT_MAXREDIRS => 10,
-                    CURLOPT_TIMEOUT => 30,
-                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                    CURLOPT_CUSTOMREQUEST => "POST",
-                    CURLOPT_POSTFIELDS => "source_language=".$_POST["lOrigem"]."&target_language=".$_POST["lDestino"]."&text=".$_POST["texto"]."",
-                    CURLOPT_HTTPHEADER => [
-                        "X-RapidAPI-Host: text-translator2.p.rapidapi.com",
-                        "X-RapidAPI-Key: 34fc55e7c0mshe8b9d757743821cp1cd6d9jsn15c26f8282ba",
-                        "content-type: application/x-www-form-urlencoded"
-                    ],
-                ]);
+                    curl_setopt_array($curl, [
+                        CURLOPT_URL => "https://text-translator2.p.rapidapi.com/translate",
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_FOLLOWLOCATION => true,
+                        CURLOPT_ENCODING => "",
+                        CURLOPT_MAXREDIRS => 10,
+                        CURLOPT_TIMEOUT => 30,
+                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                        CURLOPT_CUSTOMREQUEST => "POST",
+                        CURLOPT_POSTFIELDS => "source_language=" . $_POST["lOrigem"] . "&target_language=" . $_POST["lDestino"] . "&text=" . $_POST["texto"] . "",
+                        CURLOPT_HTTPHEADER => [
+                            "X-RapidAPI-Host: text-translator2.p.rapidapi.com",
+                            "X-RapidAPI-Key: 34fc55e7c0mshe8b9d757743821cp1cd6d9jsn15c26f8282ba",
+                            "content-type: application/x-www-form-urlencoded"
+                        ],
+                    ]);
 
-                $response = curl_exec($curl);
-                $err = curl_error($curl);
+                    $response = curl_exec($curl);
+                    $err = curl_error($curl);
 
-                curl_close($curl);
+                    curl_close($curl);
 
-                if ($err) {
-                    echo "cURL Error #:" . $err;
-                } else {
-                $json = json_decode($response, true);
+                    if ($err) {
+                        echo "cURL Error #:" . $err;
+                    } else {
+                        $json = json_decode($response, true);
 
-                $texto_traduzido=$json["data"]["translatedText"];
+                        $texto_traduzido = $json["data"]["translatedText"];
+
+                        ?>
+
+                        <textarea name="texto" cols="40" rows="5" class="form-control"
+                                  id="exampleFormControlTextarea4"> <?php echo $texto_traduzido ?> </textarea>
+
+                        <?php
+                    }
+
+                }
 
                 ?>
-
-                <textarea name="texto" cols="40" rows="5" class="form-control" id="exampleFormControlTextarea4" > <?php echo $texto_traduzido ?> </textarea>
-
-            <?php
-                 }
-
-            }
-
-            ?>
 
 
             </div>
